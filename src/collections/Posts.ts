@@ -1,4 +1,7 @@
+import payload from "payload";
 import { CollectionConfig } from "payload/types";
+
+console.log(payload);
 
 const Posts: CollectionConfig = {
 	slug: "posts",
