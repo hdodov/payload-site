@@ -13,7 +13,25 @@ app.get("/", (_, res) => {
 payload.init({
 	secret: process.env.PAYLOAD_SECRET,
 	express: app,
-	onInit: () => {
+	onInit: async () => {
+		await payload.create({
+			collection: "users",
+			data: {
+				email: "dev@payloadcms.com",
+				password: "test",
+				roles: ["admin"],
+			},
+		});
+
+		await payload.create({
+			collection: "users",
+			data: {
+				email: "user@payloadcms.com",
+				password: "test2",
+				roles: ["user"],
+			},
+		});
+
 		payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
 	},
 });
